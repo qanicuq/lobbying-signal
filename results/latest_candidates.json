@@ -1,0 +1,365 @@
+{
+ "quarter": "2026Q2",
+ "rows": [
+  {
+   "ticker": "SMCI",
+   "name": "Super Micro Computer, Inc.",
+   "sector": "Electronic Computers",
+   "spend": 1030000.0,
+   "prev_q": 20000.0,
+   "qoq": 50.5,
+   "yoy": null,
+   "mcap": 18379348488.72788,
+   "cheap": false,
+   "leaps": [
+    "2027-12-17",
+    "2028-01-21",
+    "2028-12-15",
+    "2029-01-19"
+   ]
+  },
+  {
+   "ticker": "GTE",
+   "name": "GRAN TIERRA ENERGY INC.",
+   "sector": "Crude Petroleum & Natural Gas",
+   "spend": 300000.0,
+   "prev_q": 41936.0,
+   "qoq": 6.153758107592522,
+   "yoy": null,
+   "mcap": 257066399.62556362,
+   "cheap": false,
+   "leaps": []
+  },
+  {
+   "ticker": "IONQ",
+   "name": "IonQ, Inc.",
+   "sector": "Services-Computer Integrated Systems Design",
+   "spend": 680000.0,
+   "prev_q": 110000.0,
+   "qoq": 5.181818181818182,
+   "yoy": 5.181818181818182,
+   "mcap": 12945001910.552948,
+   "cheap": false,
+   "leaps": [
+    "2028-01-21",
+    "2029-01-19"
+   ]
+  },
+  {
+   "ticker": "ORGO",
+   "name": "Organogenesis Holdings Inc.",
+   "sector": "Pharmaceutical Preparations",
+   "spend": 128749.0,
+   "prev_q": 34000.0,
+   "qoq": 2.786735294117647,
+   "yoy": -0.5048115384615385,
+   "mcap": 317826137.2414083,
+   "cheap": true,
+   "leaps": []
+  },
+  {
+   "ticker": "ONCY",
+   "name": "ONCOLYTICS BIOTECH INC",
+   "sector": "Pharmaceutical Preparations",
+   "spend": 105000.0,
+   "prev_q": 35000.0,
+   "qoq": 2.0,
+   "yoy": null,
+   "mcap": 99063873.6180641,
+   "cheap": false,
+   "leaps": []
+  },
+  {
+   "ticker": "CTAS",
+   "name": "CINTAS CORP",
+   "sector": "Men's & Boys' Furnishgs, Work Clothg, & Allied Garments",
+   "spend": 760000.0,
+   "prev_q": 260000.0,
+   "qoq": 1.923076923076923,
+   "yoy": 2.04,
+   "mcap": 80561542526.03381,
+   "cheap": false,
+   "leaps": [
+    "2028-01-21",
+    "2029-01-19"
+   ]
+  },
+  {
+   "ticker": "BNY",
+   "name": "Bank of New York Mellon Corp",
+   "sector": "State Commercial Banks",
+   "spend": 140000.0,
+   "prev_q": 50000.0,
+   "qoq": 1.7999999999999998,
+   "yoy": 1.7999999999999998,
+   "mcap": 110088334608.61748,
+   "cheap": false,
+   "leaps": [
+    "2028-01-21",
+    "2029-01-19"
+   ]
+  },
+  {
+   "ticker": "UEC",
+   "name": "URANIUM ENERGY CORP",
+   "sector": "Miscellaneous Metal Ores",
+   "spend": 305000.0,
+   "prev_q": 110000.0,
+   "qoq": 1.772727272727273,
+   "yoy": 9.166666666666666,
+   "mcap": 4815107894.645409,
+   "cheap": false,
+   "leaps": [
+    "2028-01-21",
+    "2029-01-19"
+   ]
+  },
+  {
+   "ticker": "AMSC",
+   "name": "AMERICAN SUPERCONDUCTOR CORP /DE/",
+   "sector": "Motors & Generators",
+   "spend": 240000.0,
+   "prev_q": 90000.0,
+   "qoq": 1.6666666666666665,
+   "yoy": 0.04347826086956519,
+   "mcap": 1592994535.7759476,
+   "cheap": false,
+   "leaps": [
+    "2028-01-21",
+    "2029-01-19"
+   ]
+  },
+  {
+   "ticker": "MP",
+   "name": "MP Materials Corp. / DE",
+   "sector": "Metal Mining",
+   "spend": 390000.0,
+   "prev_q": 150000.0,
+   "qoq": 1.6,
+   "yoy": 2.5454545454545454,
+   "mcap": 8132054058.968063,
+   "cheap": false,
+   "leaps": [
+    "2027-12-17",
+    "2028-01-21",
+    "2028-06-16",
+    "2028-12-15",
+    "2029-01-19"
+   ]
+  },
+  {
+   "ticker": "WAB",
+   "name": "WESTINGHOUSE AIR BRAKE TECHNOLOGIES CORP",
+   "sector": "Railroad Equipment",
+   "spend": 130000.0,
+   "prev_q": 50000.0,
+   "qoq": 1.6,
+   "yoy": 0.4444444444444444,
+   "mcap": 48984146790.0,
+   "cheap": false,
+   "leaps": []
+  },
+  {
+   "ticker": "ALHC",
+   "name": "Alignment Healthcare, Inc.",
+   "sector": "Hospital & Medical Service Plans",
+   "spend": 115000.0,
+   "prev_q": 45000.0,
+   "qoq": 1.5555555555555554,
+   "yoy": 1.0909090909090908,
+   "mcap": 4293861598.345234,
+   "cheap": false,
+   "leaps": [
+    "2027-12-17",
+    "2028-01-21",
+    "2029-01-19"
+   ]
+  },
+  {
+   "ticker": "APPN",
+   "name": "APPIAN CORP",
+   "sector": "Services-Prepackaged Software",
+   "spend": 230000.0,
+   "prev_q": 90000.0,
+   "qoq": 1.5555555555555554,
+   "yoy": 6.666666666666667,
+   "mcap": null,
+   "cheap": null,
+   "leaps": [
+    "2028-01-21",
+    "2028-12-15"
+   ]
+  },
+  {
+   "ticker": "JBTM",
+   "name": "JBT MAREL Corp",
+   "sector": "Special Industry Machinery (No Metalworking Machinery)",
+   "spend": 150000.0,
+   "prev_q": 60000.0,
+   "qoq": 1.5,
+   "yoy": null,
+   "mcap": 7041651180.897034,
+   "cheap": false,
+   "leaps": []
+  },
+  {
+   "ticker": "PRM",
+   "name": "Perimeter Solutions, Inc.",
+   "sector": "Chemicals & Allied Products",
+   "spend": 340000.0,
+   "prev_q": 140000.0,
+   "qoq": 1.4285714285714284,
+   "yoy": 1.4285714285714284,
+   "mcap": 5551213754.760284,
+   "cheap": false,
+   "leaps": [
+    "2027-12-17"
+   ]
+  },
+  {
+   "ticker": "CBOE",
+   "name": "Cboe Global Markets, Inc.",
+   "sector": "Security & Commodity Brokers, Dealers, Exchanges & Services",
+   "spend": 400000.0,
+   "prev_q": 170000.0,
+   "qoq": 1.3529411764705883,
+   "yoy": 1.3529411764705883,
+   "mcap": 29491435053.68799,
+   "cheap": false,
+   "leaps": [
+    "2028-01-21",
+    "2028-06-16",
+    "2028-12-15",
+    "2029-01-19"
+   ]
+  },
+  {
+   "ticker": "IVVD",
+   "name": "Invivyd, Inc.",
+   "sector": "Biological Products, (No Diagnostic Substances)",
+   "spend": 180000.0,
+   "prev_q": 80000.0,
+   "qoq": 1.25,
+   "yoy": null,
+   "mcap": 182656621.6447978,
+   "cheap": false,
+   "leaps": []
+  },
+  {
+   "ticker": "RIOT",
+   "name": "Riot Platforms, Inc.",
+   "sector": "Finance Services",
+   "spend": 180000.0,
+   "prev_q": 80000.0,
+   "qoq": 1.25,
+   "yoy": 0.05882352941176472,
+   "mcap": 8841175440.042858,
+   "cheap": false,
+   "leaps": [
+    "2028-01-21",
+    "2029-01-19"
+   ]
+  },
+  {
+   "ticker": "DK",
+   "name": "Delek US Holdings, Inc.",
+   "sector": "Petroleum Refining",
+   "spend": 180000.0,
+   "prev_q": 80000.0,
+   "qoq": 1.25,
+   "yoy": null,
+   "mcap": 4055396541.919159,
+   "cheap": false,
+   "leaps": [
+    "2027-11-19",
+    "2028-01-21"
+   ]
+  },
+  {
+   "ticker": "OVV",
+   "name": "Ovintiv Inc.",
+   "sector": "Crude Petroleum & Natural Gas",
+   "spend": 400000.0,
+   "prev_q": 180000.0,
+   "qoq": 1.2222222222222223,
+   "yoy": 0.33333333333333326,
+   "mcap": 17004435074.829609,
+   "cheap": true,
+   "leaps": [
+    "2027-11-19",
+    "2028-01-21"
+   ]
+  },
+  {
+   "ticker": "BC",
+   "name": "BRUNSWICK CORP",
+   "sector": "Engines & Turbines",
+   "spend": 191000.0,
+   "prev_q": 90000.0,
+   "qoq": 1.1222222222222222,
+   "yoy": 2.183333333333333,
+   "mcap": 5333101990.011749,
+   "cheap": false,
+   "leaps": []
+  },
+  {
+   "ticker": "IMMX",
+   "name": "Immix Biopharma, Inc.",
+   "sector": "Pharmaceutical Preparations",
+   "spend": 145000.0,
+   "prev_q": 70000.0,
+   "qoq": 1.0714285714285716,
+   "yoy": null,
+   "mcap": 512011519.7674751,
+   "cheap": false,
+   "leaps": []
+  },
+  {
+   "ticker": "BMY",
+   "name": "BRISTOL MYERS SQUIBB CO",
+   "sector": "Pharmaceutical Preparations",
+   "spend": 3850000.0,
+   "prev_q": 1910000.0,
+   "qoq": 1.0157068062827226,
+   "yoy": -0.22535211267605637,
+   "mcap": 124076245540.17122,
+   "cheap": false,
+   "leaps": [
+    "2027-12-17",
+    "2028-01-21",
+    "2028-12-15",
+    "2029-01-19"
+   ]
+  },
+  {
+   "ticker": "HOS",
+   "name": "HORNBECK OFFSHORE SERVICES, INC.",
+   "sector": "Oil & Gas Field Services, NEC",
+   "spend": 135000.0,
+   "prev_q": 73929.0,
+   "qoq": 0.8260763705717649,
+   "yoy": 0.9285714285714286,
+   "mcap": 1421407231.6109998,
+   "cheap": false,
+   "leaps": []
+  },
+  {
+   "ticker": "ARM",
+   "name": "ARM HOLDINGS PLC /UK",
+   "sector": "Semiconductors & Related Devices",
+   "spend": 490000.0,
+   "prev_q": 270000.0,
+   "qoq": 0.8148148148148149,
+   "yoy": 1.3333333333333335,
+   "mcap": 301553251922.32214,
+   "cheap": false,
+   "leaps": [
+    "2027-12-17",
+    "2028-01-21",
+    "2028-06-16",
+    "2028-12-15",
+    "2029-01-19"
+   ]
+  }
+ ]
+}

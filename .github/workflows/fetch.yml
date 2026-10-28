@@ -1,0 +1,47 @@
+name: fetch-lobbying
+on:
+  schedule:
+    - cron: "7 */6 * * *"   # every 6 hours: each run lasts up to ~5.5h while backfilling, ~1 min after (key added 2026-10-15, restarted)
+  workflow_dispatch: {}
+  push:
+    paths: ["src/fetch_lda.py", ".github/workflows/fetch.yml"]
+permissions:
+  contents: write
+concurrency:
+  group: fetch-lobbying
+  cancel-in-progress: true
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install requests
+      - run: |
+          git config user.name "lobbying-bot"
+          git config user.email "lobbying-bot@users.noreply.github.com"
+          mkdir -p logs
+          set -o pipefail
+          python src/fetch_lda.py 2>&1 | tee logs/fetch.log
+        env:
+          LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
+          TIME_BUDGET_MIN: "320"
+      - name: Save log (so problems are visible without opening Actions)
+        if: always()
+        run: |
+          git add logs/fetch.log
+          git commit -qm "fetch log [skip ci]" || true
+          git pull --rebase -q || true
+          git push -q || true
+
+      - name: Phone alert if this run failed
+        if: failure()
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          curl -s -H "Title: lobbying-signal: fetch-lobbying FAILED" -H "Priority: high" -H "Tags: x" \
+            -H "Click: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            -d "Tap to open the failed run on GitHub." \
+            "https://ntfy.sh/${NTFY_TOPIC}" || true

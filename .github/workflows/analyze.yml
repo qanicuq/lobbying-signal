@@ -1,0 +1,66 @@
+name: analyze
+on:
+  workflow_run:
+    workflows: ["fetch-lobbying"]
+    types: [completed]
+  push:
+    paths: ["src/backtest.py", "src/panel.py", "src/sec.py", "src/prices.py", ".github/workflows/analyze.yml", "run-analysis.txt"]
+  schedule:
+    - cron: "37 13 25 1,4,7,10 *"   # 25th of Jan/Apr/Jul/Oct, after each quarterly filing deadline
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency:
+  group: analyze
+  cancel-in-progress: true
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - id: gate
+        name: After a download run, only analyse once the full history is in (and only once per new data)
+        run: |
+          n=$(ls data/lda/*.csv.gz 2>/dev/null | wc -l)
+          echo "n=$n" >> $GITHUB_OUTPUT
+          if [ "${{ github.event_name }}" != "workflow_run" ]; then echo go=1 >> $GITHUB_OUTPUT; exit 0; fi
+          if grep -q "quarters still missing: 0" logs/fetch.log 2>/dev/null && [ "$(cat results/data_count 2>/dev/null)" != "$n" ]; then
+            echo go=1 >> $GITHUB_OUTPUT; else echo go=0 >> $GITHUB_OUTPUT; fi
+      - if: steps.gate.outputs.go == '1'
+        uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - if: steps.gate.outputs.go == '1'
+        run: pip install requests pandas yfinance
+      - if: steps.gate.outputs.go == '1'
+        uses: actions/cache@v4
+        with:
+          path: data/prices
+          key: prices-${{ github.run_id }}
+          restore-keys: prices-
+      - if: steps.gate.outputs.go == '1'
+        uses: actions/cache@v4
+        with:
+          path: data/sec
+          key: sec-${{ github.run_id }}
+          restore-keys: sec-
+      - if: steps.gate.outputs.go == '1'
+        run: |
+          mkdir -p logs results
+          set -o pipefail
+          python -u src/backtest.py 2>&1 | tee logs/analyze.log
+          echo "${{ steps.gate.outputs.n }}" > results/data_count
+        env:
+          SEC_EMAIL: ${{ secrets.SEC_EMAIL }}
+      - if: always() && steps.gate.outputs.go == '1'
+        run: |
+          git config user.name "lobbying-bot"; git config user.email "lobbying-bot@users.noreply.github.com"
+          git add results logs/analyze.log 2>/dev/null; git commit -qm "Backtest results [skip ci]" || true
+          git pull --rebase -q || true; git push -q || true
+      - if: always() && steps.gate.outputs.go == '1' && github.event_name != 'push'
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          if [ "${{ job.status }}" = "success" ]; then msg="Lobbying backtest finished. Ask Claude to review the results."; else msg="Lobbying backtest hit an error. Ask Claude to check logs/analyze.log."; fi
+          curl -s -H "Title: lobbying-signal" -d "$msg" "https://ntfy.sh/${NTFY_TOPIC}" >/dev/null || true

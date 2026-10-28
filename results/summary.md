@@ -1,0 +1,31 @@
+# Lobbying-jump backtest
+
+Top 10 by lobbying growth each quarter; this-quarter spend >= $100,000, comparison-quarter spend >= $20,000. Returns include dividends.
+
+Excess = picks minus the average of every lobbying company in the same universe that quarter (both groups are today's survivors, which cancels much of the survivorship bias). Only fully completed holding periods are counted.
+
+| Variant | Filter | Hold | Quarters | Avg picks | Avg universe | Avg SPY | Avg excess vs universe | Quarters beating universe | t-stat* |
+|---|---|---|---|---|---|---|---|---|---|
+| QOQ | all | 3m | 66 | +5.6% | +4.4% | +3.3% | +1.2% | 50% | 1.09 |
+| QOQ | all | 6m | 64 | +9.2% | +8.0% | +6.8% | +1.2% | 50% | 1.01 |
+| QOQ | all | 12m | 61 | +18.1% | +17.6% | +15.2% | +0.5% | 46% | 0.27 |
+| QOQ | cheap | 3m | 57 | +5.5% | +4.3% | +3.4% | +1.2% | 47% | 1.14 |
+| QOQ | cheap | 6m | 56 | +9.6% | +8.2% | +7.3% | +1.4% | 52% | 1.04 |
+| QOQ | cheap | 12m | 54 | +19.9% | +17.2% | +15.7% | +2.6% | 43% | 0.94 |
+| YOY | all | 3m | 66 | +4.6% | +4.8% | +4.1% | -0.2% | 48% | -0.19 |
+| YOY | all | 6m | 64 | +8.8% | +8.8% | +7.8% | -0.0% | 47% | -0.01 |
+| YOY | all | 12m | 60 | +18.7% | +18.0% | +15.7% | +0.7% | 42% | 0.28 |
+| YOY | cheap | 3m | 55 | +5.1% | +4.7% | +3.9% | +0.4% | 49% | 0.47 |
+| YOY | cheap | 6m | 54 | +10.3% | +8.9% | +8.2% | +1.4% | 46% | 1.14 |
+| YOY | cheap | 12m | 52 | +20.9% | +18.1% | +16.6% | +2.8% | 54% | 1.12 |
+
+*t-stat: roughly, above 2 suggests the result is unlikely to be luck. For 6- and 12-month holds the quarterly periods overlap, which overstates it.
+
+- QOQ 12-month, small (<$2B) picks: 47 picks, avg excess +23.8%, median +7.9%, beat universe 53% of the time
+- QOQ 12-month, large (>=$2B) picks: 398 picks, avg excess -1.5%, median -5.2%, beat universe 42% of the time
+- QOQ 12-month: 35% of individual picks rose 25%+ (a rough bar for a LEAP to pay off); 13% fell 25%+
+- YOY 12-month, small (<$2B) picks: 71 picks, avg excess +14.5%, median -10.1%, beat universe 42% of the time
+- YOY 12-month, large (>=$2B) picks: 378 picks, avg excess -2.1%, median -5.8%, beat universe 39% of the time
+- YOY 12-month: 33% of individual picks rose 25%+ (a rough bar for a LEAP to pay off); 16% fell 25%+
+
+Limits: Yahoo and the SEC ticker list only cover companies still listed today, so firms that went bust or were bought are missing. Lobbying clients are matched to companies by exact normalised name (including former names); subsidiaries lobbying under their own names are missed. Cheapness uses the latest annual net income and latest equity filed before the signal date.
