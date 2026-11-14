@@ -4,7 +4,7 @@ on:
     workflows: ["fetch-lobbying"]
     types: [completed]
   push:
-    paths: ["src/backtest.py", "src/panel.py", "src/sec.py", "src/prices.py", ".github/workflows/analyze.yml", "run-analysis.txt"]
+    paths: ["src/backtest.py", "src/panel.py", "src/sec.py", "src/prices.py", "src/smallcap_check.py", ".github/workflows/analyze.yml", "run-analysis.txt"]
   schedule:
     - cron: "37 13 25 1,4,7,10 *"   # 25th of Jan/Apr/Jul/Oct, after each quarterly filing deadline
   workflow_dispatch: {}
@@ -50,6 +50,7 @@ jobs:
           mkdir -p logs results
           set -o pipefail
           python -u src/backtest.py 2>&1 | tee logs/analyze.log
+          python -u src/smallcap_check.py 2>&1 | tee -a logs/analyze.log
           echo "${{ steps.gate.outputs.n }}" > results/data_count
         env:
           SEC_EMAIL: ${{ secrets.SEC_EMAIL }}
