@@ -2,6 +2,7 @@
 import json
 import os
 import time
+from datetime import date
 from pathlib import Path
 
 import requests
@@ -71,10 +72,17 @@ def _d(s):
     return date.fromisoformat(s).toordinal()
 
 
+def _fresh(have, today):
+    """Keep saved SEC data only if it was fetched today (UTC); otherwise start over so new filings are picked up."""
+    if have.get("_date") == today:
+        return have
+    return {"_date": today}
+
+
 def fundamentals(ciks):
     """{cik: {'ni': [[end, filed, val]], 'eq': [...], 'sh': [...]}} cached on disk."""
     path = CACHE / "fundamentals.json"
-    have = json.loads(path.read_text()) if path.exists() else {}
+    have = _fresh(json.loads(path.read_text()) if path.exists() else {}, date.today().isoformat())
     for cik in ciks:
         if str(cik) in have:
             continue

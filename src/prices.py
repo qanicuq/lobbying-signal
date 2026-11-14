@@ -1,6 +1,7 @@
 """Daily prices from Yahoo (via yfinance), cached as one gzipped CSV per ticker."""
 import gzip
 import time
+from datetime import date
 from pathlib import Path
 
 import pandas as pd
@@ -10,6 +11,17 @@ CACHE = Path(__file__).resolve().parent.parent / "data" / "prices"
 MAX_GAP_DAYS = 7
 
 
+def _clear_if_stale(folder, today):
+    """Delete saved price files unless they were downloaded today (UTC), so every run uses fresh prices."""
+    folder.mkdir(parents=True, exist_ok=True)
+    stamp = folder / "_downloaded_on.txt"
+    if stamp.exists() and stamp.read_text().strip() == today:
+        return
+    for p in folder.glob("*.csv.gz"):
+        p.unlink()
+    stamp.write_text(today)
+
+
 def _has_rows(path):
     """True if a cached price file exists and has at least one row (empty files get re-downloaded)."""
     return path.exists() and len(pd.read_csv(path, nrows=1)) > 0
@@ -17,7 +29,7 @@ def _has_rows(path):
 
 def load(tickers, start="2008-01-01"):
     """{ticker: DataFrame[date index; adj, close, split]}; missing tickers are left out."""
-    CACHE.mkdir(parents=True, exist_ok=True)
+    _clear_if_stale(CACHE, date.today().isoformat())
     need = [t for t in tickers if not _has_rows(CACHE / f"{t}.csv.gz")]
     for i in range(0, len(need), 80):
         batch = need[i:i + 80]
@@ -43,6 +55,7 @@ def load(tickers, start="2008-01-01"):
             if len(d):
                 d["split"] = d["split"].fillna(0)
                 res[t] = d
+    print(f"prices: {len(res)} of {len(tickers)} tickers have data", flush=True)
     return res
 
 
