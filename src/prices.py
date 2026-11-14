@@ -9,17 +9,22 @@ import yfinance as yf
 CACHE = Path(__file__).resolve().parent.parent / "data" / "prices"
 
 
+def _has_rows(path):
+    """True if a cached price file exists and has at least one row (empty files get re-downloaded)."""
+    return path.exists() and len(pd.read_csv(path, nrows=1)) > 0
+
+
 def load(tickers, start="2008-01-01"):
     """{ticker: DataFrame[date index; adj, close, split]}; missing tickers are left out."""
     CACHE.mkdir(parents=True, exist_ok=True)
-    need = [t for t in tickers if not (CACHE / f"{t}.csv.gz").exists()]
+    need = [t for t in tickers if not _has_rows(CACHE / f"{t}.csv.gz")]
     for i in range(0, len(need), 80):
         batch = need[i:i + 80]
         df = yf.download(batch, start=start, auto_adjust=False, actions=True,
                          progress=False, group_by="ticker", threads=True)
         for t in batch:
             try:
-                sub = df[t] if len(batch) > 1 else df
+                sub = df[t] if isinstance(df.columns, pd.MultiIndex) else df
                 sub = sub.dropna(subset=["Close"])
             except KeyError:
                 sub = pd.DataFrame()
