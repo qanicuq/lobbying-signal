@@ -31,6 +31,11 @@ def main():
     avg, cnt = sc.portfolio_daily([a, b])
     assert abs(float(avg.loc[d0]) - (0.20 + 0.40) / 2) < 1e-12
     assert int(cnt.loc[d0]) == 2
+    gap_idx = pd.bdate_range("2020-03-02", periods=3)
+    gap_df = pd.DataFrame({"adj": [1.0, 1.0, 1.0], "close": [1.0, 1.0, 1.0], "split": 0.0}, index=gap_idx)
+    assert sc.prices.price_on_or_after(gap_df, "2020-02-28")[0] == 0
+    assert sc.prices.price_on_or_after(gap_df, "2020-02-20") is None
+    assert sc.prices.price_on_or_after(gap_df, "2020-03-10") is None
     print("smallcap test passed")
 
 

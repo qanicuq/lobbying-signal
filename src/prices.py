@@ -7,6 +7,7 @@ import pandas as pd
 import yfinance as yf
 
 CACHE = Path(__file__).resolve().parent.parent / "data" / "prices"
+MAX_GAP_DAYS = 7
 
 
 def _has_rows(path):
@@ -46,9 +47,11 @@ def load(tickers, start="2008-01-01"):
 
 
 def price_on_or_after(df, day):
-    """(row position, row) of the first trading day on/after `day`, or None."""
+    """(row position, row) of the first trading day on/after `day`, or None if there is none within MAX_GAP_DAYS calendar days."""
     pos = df.index.searchsorted(pd.Timestamp(day))
     if pos >= len(df):
+        return None
+    if (df.index[pos] - pd.Timestamp(day)).days > MAX_GAP_DAYS:
         return None
     return pos, df.iloc[pos]
 
