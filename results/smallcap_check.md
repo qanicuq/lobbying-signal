@@ -9,17 +9,17 @@ No bet sizing is used. If this is ever traded, size at half-Kelly or less, never
 
 | round-trip cost | months | picks used | growth of $1 in portfolio | growth of $1 in IWM | average monthly excess vs IWM | months beating IWM (%) | t-stat |
 |---|---|---|---|---|---|---|---|
-| 0% | 191 | 69 | 88.9581 | 4.3244 | +2.0% | +61.3% | 3.17 |
-| 0.5% | 191 | 69 | 82.5597 | 4.3244 | +2.0% | +60.7% | 3.11 |
-| 1% | 191 | 69 | 76.6135 | 4.3244 | +2.0% | +60.7% | 3.05 |
-| 2% | 191 | 69 | 65.9544 | 4.3244 | +1.9% | +59.7% | 2.92 |
+| 0% | 191 | 69 | 82.8572 | 4.2775 | +2.0% | +60.7% | 3.12 |
+| 0.5% | 191 | 69 | 76.9104 | 4.2775 | +2.0% | +60.2% | 3.06 |
+| 1% | 191 | 69 | 71.3830 | 4.2775 | +1.9% | +60.2% | 3.00 |
+| 2% | 191 | 69 | 61.4719 | 4.2775 | +1.9% | +59.7% | 2.87 |
 
 ## Older half vs newer half (cost 1%)
 
 | round-trip cost | months | picks used | growth of $1 in portfolio | growth of $1 in IWM | average monthly excess vs IWM | months beating IWM (%) | t-stat |
 |---|---|---|---|---|---|---|---|
 | 1% before 2018-01 | 84 | 19 | 3.0899 | 2.1100 | +0.7% | +58.3% | 0.93 |
-| 1% from 2018-01 | 107 | 55 | 24.7951 | 2.0495 | +3.0% | +62.6% | 3.01 |
+| 1% from 2018-01 | 107 | 55 | 23.1023 | 2.0273 | +2.9% | +61.7% | 2.94 |
 
 ## Per pick (complete 12-month holds, cost 1%)
 
@@ -42,13 +42,13 @@ None yet. The first will be the Q4 2026 filings (signal day 2027-01-22).
 
 | ticker | signal day | return so far | IWM so far |
 |---|---|---|---|
-| NB | 2026-01-22 | -57.5% | +4.7% |
-| FEAM | 2026-01-22 | -46.8% | +4.7% |
-| FIP | 2026-04-22 | -30.0% | +2.0% |
-| GTE | 2026-07-22 | +31.8% | -4.2% |
-| ORGO | 2026-07-22 | -61.8% | -4.2% |
-| AMSC | 2026-07-22 | -24.7% | -4.2% |
-| NVX | 2026-10-22 | +7.6% | +2.1% |
+| NB | 2026-01-22 | -62.3% | +3.6% |
+| FEAM | 2026-01-22 | -53.7% | +3.6% |
+| FIP | 2026-04-22 | -28.6% | +0.9% |
+| GTE | 2026-07-22 | +29.0% | -5.3% |
+| ORGO | 2026-07-22 | -67.6% | -5.3% |
+| AMSC | 2026-07-22 | -28.5% | -5.3% |
+| NVX | 2026-10-22 | +3.6% | +0.3% |
 
 ## Month by month (cost 1%)
 
@@ -244,7 +244,7 @@ None yet. The first will be the Q4 2026 filings (signal day 2027-01-22).
 | 2026-08 | 9 | +13.0% | +0.9% | +2.7% | +12.0% |
 | 2026-09 | 9 | +3.2% | -5.2% | -0.3% | +8.4% |
 | 2026-10 | 10 | -12.1% | +0.5% | -0.9% | -12.7% |
-| 2026-11 | 7 | +0.5% | +0.4% | -0.7% | +0.1% |
+| 2026-11 | 7 | -6.4% | -0.6% | -0.2% | -5.7% |
 
 Verdict: PASSES the strict check.
 Limits: only companies still listed today have prices, so failed or bought-out companies are missing. Picks with unknown size (mostly 2008–2010) are left out. Both halves were already seen when this slice was chosen, so only the never-seen picks are a true out-of-sample test.
