@@ -31,3 +31,4 @@ Excess = picks minus the average of every lobbying company in the same universe 
 - YOY 12-month: 33% of individual picks rose 25%+ (a rough bar for a LEAP to pay off); 17% fell 25%+
 
 Limits: Yahoo and the SEC ticker list only cover companies still listed today, so firms that went bust or were bought are missing. Lobbying clients are matched to companies by exact normalised name (including former names); subsidiaries lobbying under their own names are missed. Cheapness uses the latest annual net income and latest equity filed before the signal date.
+IWM or SPY prices missing; skipping.
